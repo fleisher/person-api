@@ -9,6 +9,7 @@ import java.util.List;
 public class PersonServiceImpl implements PersonService {
     @Override
     public List<Person> getAllPersons() {
+        // Получение списка персон
         List<Person> personsList = new ArrayList<>();
         personsList.add(new Person(1L, "Tom", 20));
         personsList.add(new Person(2L, "Andry", 30));
