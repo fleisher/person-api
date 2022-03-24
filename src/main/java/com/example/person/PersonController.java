@@ -1,12 +1,13 @@
 package com.example.person;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/persons")
 public class PersonController {
 
     private PersonService personService;
@@ -16,8 +17,20 @@ public class PersonController {
         this.personService = personService;
     }
 
-    @GetMapping("/persons")
-    public List<Person> getAllPersons(){
+    @GetMapping
+    public List<Person> getAllPersons() {
         return personService.getAllPersons();
     }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Person postPersons(@RequestBody Person resource) {
+        return personService.postPerson(resource);
+    }
+
+    @GetMapping(value = "/{id}")
+    public Person getPerson(@PathVariable("id") Long id) {
+        return personService.getPerson(id);
+    }
+
 }

@@ -1,6 +1,9 @@
 package com.example.person;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class Person {
 
@@ -8,8 +11,11 @@ public class Person {
     private String name;
     private Integer age;
 
-    public Person(Long id, String name, Integer age) {
-        this.id = id;
+    public static List<Person> personsList = new ArrayList<>();
+    private static AtomicLong lastId = new AtomicLong(1L);
+
+    public Person(String name, Integer age) {
+        this.id = lastId.getAndIncrement();
         this.name = name;
         this.age = age;
     }
@@ -36,6 +42,10 @@ public class Person {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public static Person getPersonById(Long id) {
+        return Person.personsList.get(Math.toIntExact(id));
     }
 
     @Override

@@ -1,19 +1,26 @@
 package com.example.person;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class PersonServiceImpl implements PersonService {
+
     @Override
     public List<Person> getAllPersons() {
-        // Получение списка персон
-        List<Person> personsList = new ArrayList<>();
-        personsList.add(new Person(1L, "Tom", 20));
-        personsList.add(new Person(2L, "Andry", 30));
-        personsList.add(new Person(3L, "Bob", 25));
-        return personsList;
+        return Person.personsList;
+    }
+
+    @Override
+    public Person postPerson(Person resource) {
+        resource.personsList.add(resource);
+        return resource;
+    }
+
+    @Override
+    public Person getPerson(@PathVariable("id") Long id) {
+        return Person.getPersonById(--id);
     }
 }
