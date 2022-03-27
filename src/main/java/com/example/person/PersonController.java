@@ -3,7 +3,9 @@ package com.example.person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @RestController
@@ -18,6 +20,7 @@ public class PersonController {
     }
 
     @GetMapping
+    @ResponseStatus(HttpStatus.OK)
     public List<Person> getAllPersons() {
         return personService.getAllPersons();
     }
@@ -29,8 +32,15 @@ public class PersonController {
     }
 
     @GetMapping(value = "/{id}")
-    public Person getPerson(@PathVariable("id") Long id) {
-        return personService.getPerson(id);
+    @ResponseStatus(HttpStatus.OK)
+    public Person getPerson(@PathVariable("id") Long id, HttpServletResponse response) {
+
+        Person person =  personService.getPerson(id);
+        if (person == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+
+        return person;
     }
 
 }

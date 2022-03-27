@@ -14,6 +14,6 @@ Host: localhost:8080
 Accept: application/json
 
 ###
-GET /persons/1
+GET /persons/2
 Host: localhost:8080
 Accept: application/json

@@ -1,26 +1,32 @@
 package com.example.person;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
 @Service
 public class PersonServiceImpl implements PersonService {
 
+    public PersonServiceImpl(PersonDAO personDAO) {
+        this.personDAO = personDAO;
+    }
+
+    final private PersonDAO personDAO;
+
     @Override
     public List<Person> getAllPersons() {
-        return Person.personsList;
+        return personDAO.getPersonsList();
     }
 
     @Override
-    public Person postPerson(Person resource) {
-        resource.personsList.add(resource);
-        return resource;
+    public Person postPerson(Person person) {
+        personDAO.addPerson(person);
+        return person;
     }
 
     @Override
-    public Person getPerson(@PathVariable("id") Long id) {
-        return Person.getPersonById(--id);
+    public Person getPerson(Long id) {
+        return personDAO.getPersonById(id);
     }
+
 }
