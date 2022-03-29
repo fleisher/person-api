@@ -2,11 +2,11 @@ package com.example.person;
 
 import java.util.List;
 
-public interface PersonDAO {
+public interface PersonDao {
 
     Person getPersonById(Long id);
 
-    Long addPerson(Person recource);
+    Person addPerson(Person recource);
 
     List<Person> getPersonsList();
 }

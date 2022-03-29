@@ -4,7 +4,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-    "name": "Artem",
+    "name": "Artemhhh",
     "age": 35
 }
 
@@ -14,6 +14,6 @@ Host: localhost:8080
 Accept: application/json
 
 ###
-GET /persons/2
+GET /persons/0
 Host: localhost:8080
 Accept: application/json

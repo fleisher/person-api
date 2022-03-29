@@ -7,6 +7,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/persons")
@@ -35,12 +36,7 @@ public class PersonController {
     @ResponseStatus(HttpStatus.OK)
     public Person getPerson(@PathVariable("id") Long id, HttpServletResponse response) {
 
-        Person person =  personService.getPerson(id);
-        if (person == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        }
-
-        return person;
+        return Optional.ofNullable(personService.getPerson(id)).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
 }

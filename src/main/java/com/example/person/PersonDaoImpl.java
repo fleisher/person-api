@@ -7,23 +7,27 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Component
-public class PesonDAOImpl implements PersonDAO {
+public class PersonDaoImpl implements PersonDao {
 
     private List<Person> personsList = new ArrayList<>();
-    private static AtomicLong id = new AtomicLong(0);
+    private static AtomicLong id = new AtomicLong();
 
     @Override
     public Person getPersonById(Long id) {
-        return personsList.stream().filter(person -> person.getId() == id).findAny().orElse(null);
+
+        for(Person item : personsList) {
+            if (item.getId() == id) return item;
+        }
+        return null;
     }
 
     @Override
-    public Long addPerson(Person person) {
+    public Person addPerson(Person person) {
 
         person.setId(id.getAndIncrement());
         personsList.add(person);
 
-        return person.getId();
+        return person;
     }
 
     @Override

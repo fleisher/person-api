@@ -1,5 +1,6 @@
 package com.example.person;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -7,26 +8,26 @@ import java.util.List;
 @Service
 public class PersonServiceImpl implements PersonService {
 
-    public PersonServiceImpl(PersonDAO personDAO) {
-        this.personDAO = personDAO;
-    }
+    private PersonDao personDao;
 
-    final private PersonDAO personDAO;
+    @Autowired
+    public PersonServiceImpl(PersonDao personDao) {
+        this.personDao = personDao;
+    }
 
     @Override
     public List<Person> getAllPersons() {
-        return personDAO.getPersonsList();
+        return personDao.getPersonsList();
     }
 
     @Override
     public Person postPerson(Person person) {
-        personDAO.addPerson(person);
-        return person;
+        return personDao.addPerson(person);
     }
 
     @Override
     public Person getPerson(Long id) {
-        return personDAO.getPersonById(id);
+        return personDao.getPersonById(id);
     }
 
 }
