@@ -5,9 +5,9 @@ import java.util.Optional;
 
 public interface PersonDao {
 
-    Optional<Person> getPersonById(Long id);
+    Person createPerson(Person person);
 
-    Person addPerson(Person person);
+    Optional<Person> getPersonById(Long id);
 
     List<Person> getPersonsList();
 }

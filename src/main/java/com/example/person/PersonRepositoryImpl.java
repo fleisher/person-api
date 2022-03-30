@@ -17,6 +17,11 @@ public class PersonRepositoryImpl implements PersonRepository{
     }
 
     @Override
+    public Person createPerson(Person person) {
+        return personDao.createPerson(person);
+    }
+
+    @Override
     public Optional<Person> getPersonById(Long id) {
         return personDao.getPersonById(id);
     }
@@ -24,10 +29,5 @@ public class PersonRepositoryImpl implements PersonRepository{
     @Override
     public List<Person> getAllPersons() {
         return personDao.getPersonsList();
-    }
-
-    @Override
-    public Person createPerson(Person person) {
-        return personDao.addPerson(person);
     }
 }

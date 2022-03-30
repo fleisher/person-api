@@ -18,12 +18,6 @@ public class PersonController {
         this.personService = personService;
     }
 
-    @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    public List<Person> getAllPersons() {
-        return personService.getAllPersons();
-    }
-
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Person createPerson(@RequestBody Person person) {
@@ -36,4 +30,9 @@ public class PersonController {
         return personService.getPersonById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<Person> getAllPersons() {
+        return personService.getAllPersons();
+    }
 }

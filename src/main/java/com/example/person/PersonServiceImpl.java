@@ -17,11 +17,6 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public List<Person> getAllPersons() {
-        return personRepository.getAllPersons();
-    }
-
-    @Override
     public Person createPerson(Person person) {
         return personRepository.createPerson(person);
     }
@@ -31,4 +26,8 @@ public class PersonServiceImpl implements PersonService {
         return personRepository.getPersonById(id);
     }
 
+    @Override
+    public List<Person> getAllPersons() {
+        return personRepository.getAllPersons();
+    }
 }
