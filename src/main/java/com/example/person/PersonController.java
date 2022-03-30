@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/persons")
@@ -27,20 +26,14 @@ public class PersonController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Person postPerson(@RequestBody Person resource) {
+    public Person createPerson(@RequestBody Person resource) {
         return personService.createPerson(resource);
     }
 
     @GetMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Person getPerson(@PathVariable("id") Long id) {
-
-        Optional<Person> person = personService.getPerson(id);
-        if (person.isEmpty()) {
-            throw  new ResponseStatusException(HttpStatus.NOT_FOUND);
-        }
-
-        return (Person) person.get();
+        return personService.getPerson(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
 }
