@@ -5,7 +5,7 @@ import java.util.Optional;
 
 public interface PersonDao {
 
-    Optional<Person> getPerson(Long id);
+    Optional<Person> getPersonById(Long id);
 
     Person addPerson(Person person);
 

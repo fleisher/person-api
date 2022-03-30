@@ -17,8 +17,8 @@ public class PersonRepositoryImpl implements PersonRepository{
     }
 
     @Override
-    public Optional<Person> getPerson(Long id) {
-        return personDao.getPerson(id);
+    public Optional<Person> getPersonById(Long id) {
+        return personDao.getPersonById(id);
     }
 
     @Override

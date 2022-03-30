@@ -26,14 +26,14 @@ public class PersonController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Person createPerson(@RequestBody Person resource) {
-        return personService.createPerson(resource);
+    public Person createPerson(@RequestBody Person person) {
+        return personService.createPerson(person);
     }
 
     @GetMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Person getPerson(@PathVariable("id") Long id) {
-        return personService.getPerson(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    public Person getPersonById(@PathVariable("id") Long id) {
+        return personService.getPersonById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
 }

@@ -13,8 +13,7 @@ public class PersonDaoImpl implements PersonDao {
     private List<Person> personsList = new ArrayList<>();
     private static AtomicLong id = new AtomicLong();
 
-    @Override
-    public Optional<Person> getPerson(Long id) {
+    public Optional<Person> getPersonById(Long id) {
 
         for(Person item : personsList) {
             if (item.getId() == id) return Optional.of(item);

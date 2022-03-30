@@ -9,5 +9,5 @@ public interface PersonService {
 
     Person createPerson(Person person);
 
-    Optional<Person> getPerson(Long id);
+    Optional<Person> getPersonById(Long id);
 }
