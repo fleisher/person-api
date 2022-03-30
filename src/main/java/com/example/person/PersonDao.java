@@ -7,7 +7,7 @@ public interface PersonDao {
 
     Optional<Person> getPerson(Long id);
 
-    Person addPerson(Person recource);
+    Person addPerson(Person person);
 
     List<Person> getPersonsList();
 }

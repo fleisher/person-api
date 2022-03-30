@@ -35,7 +35,7 @@ public class PersonController {
     @ResponseStatus(HttpStatus.OK)
     public Person getPerson(@PathVariable("id") Long id) {
 
-        Optional person = personService.getPerson(id);
+        Optional<Person> person = personService.getPerson(id);
         if (person.isEmpty()) {
             throw  new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
