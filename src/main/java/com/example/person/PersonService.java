@@ -1,12 +1,13 @@
 package com.example.person;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface PersonService {
 
     List<Person> getAllPersons();
 
-    Person postPerson(Person person);
+    Person createPerson(Person person);
 
-    Person getPerson(Long id);
+    Optional<Person> getPerson(Long id);
 }

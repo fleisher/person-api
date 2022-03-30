@@ -4,30 +4,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PersonServiceImpl implements PersonService {
 
-    private PersonDao personDao;
+    private PersonRepository personRepository;
 
     @Autowired
-    public PersonServiceImpl(PersonDao personDao) {
-        this.personDao = personDao;
+    public PersonServiceImpl(PersonRepository personRepository) {
+        this.personRepository = personRepository;
     }
 
     @Override
     public List<Person> getAllPersons() {
-        return personDao.getPersonsList();
+        return personRepository.getAllPersons();
     }
 
     @Override
-    public Person postPerson(Person person) {
-        return personDao.addPerson(person);
+    public Person createPerson(Person person) {
+        return personRepository.createPerson(person);
     }
 
     @Override
-    public Person getPerson(Long id) {
-        return personDao.getPersonById(id);
+    public Optional<Person> getPerson(Long id) {
+        return personRepository.getPerson(id);
     }
 
 }

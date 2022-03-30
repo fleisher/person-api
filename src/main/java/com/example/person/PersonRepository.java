@@ -3,11 +3,9 @@ package com.example.person;
 import java.util.List;
 import java.util.Optional;
 
-public interface PersonDao {
+public interface PersonRepository {
 
     Optional<Person> getPerson(Long id);
-
-    Person addPerson(Person recource);
-
-    List<Person> getPersonsList();
+    List<Person> getAllPersons();
+    Person createPerson(Person person);
 }

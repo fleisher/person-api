@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Component
@@ -13,12 +14,12 @@ public class PersonDaoImpl implements PersonDao {
     private static AtomicLong id = new AtomicLong();
 
     @Override
-    public Person getPersonById(Long id) {
+    public Optional<Person> getPerson(Long id) {
 
         for(Person item : personsList) {
-            if (item.getId() == id) return item;
+            if (item.getId() == id) return Optional.of(item);
         }
-        return null;
+        return Optional.empty();
     }
 
     @Override
