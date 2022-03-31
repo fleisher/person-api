@@ -2,39 +2,32 @@ package com.example.person;
 
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Component
 public class PersonDaoImpl implements PersonDao {
 
-    private List<Person> personsList = new ArrayList<>();
+    private Map<Long,Person> personHashMap = new HashMap<>();
     private static AtomicLong id = new AtomicLong();
 
     @Override
     public Person createPerson(Person person) {
 
         person.setId(id.getAndIncrement());
-        personsList.add(person);
+        personHashMap.put(person.getId(), person);
 
         return person;
     }
 
     @Override
     public Optional<Person> getPersonById(Long id) {
-
-        for(Person item : personsList) {
-            if (item.getId() == id) return Optional.of(item);
-        }
-
-        return Optional.empty();
+        return Optional.ofNullable(personHashMap.get(id));
     }
 
     @Override
     public List<Person> getPersonsList() {
-        return personsList;
+        return personHashMap.values().stream().toList();
     }
 }
 
