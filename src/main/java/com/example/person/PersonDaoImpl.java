@@ -3,21 +3,21 @@ package com.example.person;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Component
 public class PersonDaoImpl implements PersonDao {
 
-    private Map<Long,Person> personHashMap = new HashMap<>();
+    private Map<Long,Person> personHashMap = new ConcurrentHashMap<>();
     private static AtomicLong id = new AtomicLong();
 
     @Override
     public Person createPerson(Person person) {
 
         person.setId(id.getAndIncrement());
-        personHashMap.put(person.getId(), person);
 
-        return person;
+        return personHashMap.put(person.getId(), person);
     }
 
     @Override
@@ -26,8 +26,8 @@ public class PersonDaoImpl implements PersonDao {
     }
 
     @Override
-    public List<Person> getPersonsList() {
-        return personHashMap.values().stream().toList();
+    public List<Person> getPersonsAllPersons() {
+        return new ArrayList<>(personHashMap.values());
     }
 }
 

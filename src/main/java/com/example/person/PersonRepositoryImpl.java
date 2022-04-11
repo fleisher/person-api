@@ -28,6 +28,6 @@ public class PersonRepositoryImpl implements PersonRepository{
 
     @Override
     public List<Person> getAllPersons() {
-        return personDao.getPersonsList();
+        return personDao.getPersonsAllPersons();
     }
 }

@@ -9,5 +9,5 @@ public interface PersonDao {
 
     Optional<Person> getPersonById(Long id);
 
-    List<Person> getPersonsList();
+    List<Person> getPersonsAllPersons();
 }
