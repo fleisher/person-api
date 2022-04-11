@@ -26,7 +26,7 @@ public class PersonDaoImpl implements PersonDao {
     }
 
     @Override
-    public List<Person> getPersonsAllPersons() {
+    public List<Person> getAllPersons() {
         return new ArrayList<>(personHashMap.values());
     }
 }
