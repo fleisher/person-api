@@ -30,4 +30,14 @@ public class PersonRepositoryImpl implements PersonRepository{
     public List<Person> getAllPersons() {
         return personDao.getAllPersons();
     }
+
+    @Override
+    public Optional<Person> updatePerson(Long id, Person person){
+        return personDao.updatePerson(id, person);
+    }
+
+    @Override
+    public Optional<Person> deletePerson(Long id) {
+        return  personDao.deletePerson(id);
+    }
 }

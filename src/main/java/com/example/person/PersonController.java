@@ -35,4 +35,17 @@ public class PersonController {
     public List<Person> getAllPersons() {
         return personService.getAllPersons();
     }
+
+    @PutMapping(value = "/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Person updatePerson(@RequestBody Person person, @PathVariable("id") Long id){
+        return personService.updatePerson(id, person).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
+    @DeleteMapping(value = "/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Person deletePerson(@PathVariable("id") Long id) {
+        return personService.deletePerson(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
 }

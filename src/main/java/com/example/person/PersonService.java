@@ -10,4 +10,8 @@ public interface PersonService {
     Optional<Person> getPersonById(Long id);
 
     List<Person> getAllPersons();
+
+    Optional<Person> updatePerson(Long id, Person person);
+
+    Optional<Person> deletePerson(Long id);
 }

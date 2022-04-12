@@ -29,5 +29,15 @@ public class PersonDaoImpl implements PersonDao {
     public List<Person> getAllPersons() {
         return new ArrayList<>(personHashMap.values());
     }
+
+    @Override
+    public Optional<Person> updatePerson(Long id, Person person) {
+        return Optional.ofNullable(personHashMap.replace(id, person));
+    }
+
+    @Override
+    public Optional<Person> deletePerson(Long id) {
+       return Optional.ofNullable(personHashMap.remove(id));
+    }
 }
 

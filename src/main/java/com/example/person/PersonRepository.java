@@ -11,4 +11,7 @@ public interface PersonRepository {
 
     List<Person> getAllPersons();
 
+    Optional<Person> updatePerson(Long id, Person person);
+
+    Optional<Person> deletePerson(Long id);
 }

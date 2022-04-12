@@ -1,7 +1,9 @@
 package com.example.person;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.convert.Delimiter;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,4 +32,15 @@ public class PersonServiceImpl implements PersonService {
     public List<Person> getAllPersons() {
         return personRepository.getAllPersons();
     }
+
+    @Override
+    public Optional<Person> updatePerson(Long id, Person person) {
+        return personRepository.updatePerson(id, person);
+    }
+
+    @Override
+    public Optional<Person> deletePerson(Long id) {
+        return personRepository.deletePerson(id);
+    }
+
 }
