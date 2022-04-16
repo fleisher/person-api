@@ -13,5 +13,5 @@ public interface PersonService {
 
     Optional<Person> updatePerson(Long id, Person person);
 
-    Optional<Person> deletePerson(Long id);
+    void deletePerson(Long id);
 }

@@ -37,7 +37,7 @@ public class PersonRepositoryImpl implements PersonRepository{
     }
 
     @Override
-    public Optional<Person> deletePerson(Long id) {
-        return  personDao.deletePerson(id);
+    public void deletePerson(Long id) {
+        personDao.deletePerson(id);
     }
 }

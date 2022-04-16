@@ -36,8 +36,8 @@ public class PersonDaoImpl implements PersonDao {
     }
 
     @Override
-    public Optional<Person> deletePerson(Long id) {
-       return Optional.ofNullable(personHashMap.remove(id));
+    public void deletePerson(Long id) {
+        personHashMap.remove(id);
     }
 }
 

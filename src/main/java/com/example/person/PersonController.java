@@ -19,7 +19,7 @@ public class PersonController {
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     public Person createPerson(@RequestBody Person person) {
         return personService.createPerson(person);
     }
@@ -43,9 +43,9 @@ public class PersonController {
     }
 
     @DeleteMapping(value = "/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public Person deletePerson(@PathVariable("id") Long id) {
-        return personService.deletePerson(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletePerson(@PathVariable("id") Long id) {
+        personService.deletePerson(id);
     }
 
 }

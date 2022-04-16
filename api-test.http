@@ -19,14 +19,13 @@ Host: localhost:8080
 Accept: application/json
 
 ###
-PUT /persons/1
+PUT /persons/0
 Host: localhost:8080
 Accept: application/json
 Content-Type: application/json
 
 {
-    "name": "Rustam",
-    "age": 30
+    "name": "Rustam"
 }
 
 ###
