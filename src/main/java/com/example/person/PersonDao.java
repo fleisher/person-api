@@ -3,7 +3,7 @@ package com.example.person;
 import java.util.List;
 import java.util.Optional;
 
-public interface PersonService {
+public interface PersonDao {
 
     Person createPerson(Person person);
 
@@ -13,5 +13,5 @@ public interface PersonService {
 
     Optional<Person> updatePerson(Long id, Person person);
 
-    void deletePerson(Long id);
+     void deletePerson(Long id);
 }

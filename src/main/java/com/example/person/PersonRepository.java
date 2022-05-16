@@ -3,7 +3,7 @@ package com.example.person;
 import java.util.List;
 import java.util.Optional;
 
-public interface PersonService {
+public interface PersonRepository {
 
     Person createPerson(Person person);
 

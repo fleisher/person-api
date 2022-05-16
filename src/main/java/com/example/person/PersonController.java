@@ -1,12 +1,14 @@
 package com.example.person;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/persons")
 public class PersonController {
 
     private PersonService personService;
@@ -16,8 +18,34 @@ public class PersonController {
         this.personService = personService;
     }
 
-    @GetMapping("/persons")
-    public List<Person> getAllPersons(){
+    @PostMapping
+    @ResponseStatus(HttpStatus.OK)
+    public Person createPerson(@RequestBody Person person) {
+        return personService.createPerson(person);
+    }
+
+    @GetMapping(value = "/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Person getPersonById(@PathVariable("id") Long id) {
+        return personService.getPersonById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<Person> getAllPersons() {
         return personService.getAllPersons();
     }
+
+    @PutMapping(value = "/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Person updatePerson(@RequestBody Person person, @PathVariable("id") Long id){
+        return personService.updatePerson(id, person).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
+    @DeleteMapping(value = "/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletePerson(@PathVariable("id") Long id) {
+        personService.deletePerson(id);
+    }
+
 }
